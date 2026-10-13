@@ -14,7 +14,7 @@ permalink: /years/
     {% if years.size > 0 %}
       <ul>
         {% for year in years %}
-          <li><a href="{{ "/years/" | append: year.name | append: "/" | relative_url }}">{{ year.name }}</a></li>
+          <li>{{ year.name }} ({{ year.items | size }})</li>
         {% endfor %}
       </ul>
     {% else %}

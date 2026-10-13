@@ -8,6 +8,7 @@
   --bg-surface: rgba(25, 25, 25, 0.88);
   --bg-card: #181612;
   --bg-subtle: rgba(255, 255, 255, 0.05);
+  --bg-strong: rgba(255, 255, 255, 0.08);
   --border-color: rgba(255, 255, 255, 0.11);
   --edge-highlight: inset 0 0.0625rem 0 rgba(255, 255, 255, 0.1);
   --text-main: #f4f1ea;
@@ -16,6 +17,8 @@
   --accent: #ffcc00;
   --accent-hover: #ffe066;
   --shadow-glass: 0 0.75rem 1.5rem -1rem rgba(0, 0, 0, 0.55);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-full: 9999px;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -73,6 +76,29 @@ hr {
   height: 1px;
   background: var(--border-color);
   margin: 2rem 0;
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(255,255,255,0.02);
+  color: var(--text-main);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+pre, code {
+  font-family: var(--font-mono);
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.02);
+  color: var(--text-main);
+  margin: 1rem 0;
 }
 
 .page-shell {
@@ -191,11 +217,11 @@ hr {
 
 #postlistdiv ul li a:hover { color: var(--accent); }
 
-.post-date {
+.post-date,
+.post-meta {
   color: var(--text-subtle);
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  white-space: nowrap;
 }
 
 .page-content {
@@ -203,8 +229,25 @@ hr {
 }
 
 .page-content ul,
-.page-content ol {
+.page-content ol,
+.post-article ul,
+.post-article ol {
   padding-left: 1.3rem;
+}
+
+.post-article {
+  display: block;
+}
+
+.post-article h2,
+.post-article h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.post-article p,
+.post-article li {
+  margin-bottom: 0.9rem;
 }
 
 .site-footer {
@@ -215,6 +258,29 @@ hr {
   color: var(--text-subtle);
   font-family: var(--font-mono);
   font-size: 0.76rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  background: linear-gradient(180deg, rgba(24,22,18,0.9), rgba(16,14,12,0.9));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--edge-highlight), var(--shadow-glass);
+}
+
+.stat-card strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
 }
 
 @media (max-width: 640px) {

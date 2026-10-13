@@ -12,6 +12,6 @@ permalink: /about/
 
   <div class="page-content">
     <p>Este sitio funciona como archivo personal: notas, proyectos, experimentos, referencias de tecnología y colecciones de ideas.</p>
-    <p>La navegación principal se mantiene mínima. La profundidad vive en el índice <a href="{{ "/more/" | relative_url }}">More</a>, donde van los catálogos, taxonomías y páginas de contexto.</p>
+    <p>La navegación principal se mantiene mínima. La profundidad vive en el índice <a href="{{ "/more/" | relative_url }}">More</a>, donde van los catálogos, la estadística del sitio, y páginas de contexto.</p>
   </div>
 </section>

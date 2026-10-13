@@ -1,0 +1,45 @@
+---
+layout: default
+title: Numbers
+permalink: /numbers/
+---
+
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">stats</p>
+    <h2>Numbers</h2>
+  </div>
+
+  <div class="page-content">
+    {% assign total_posts = site.posts | size %}
+    {% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+    {% assign tags = site.tags | size %}
+    {% assign cats = site.categories | size %}
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <strong>{{ total_posts }}</strong>
+        <span>posts</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ years | size }}</strong>
+        <span>años</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ tags }}</strong>
+        <span>tags</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ cats }}</strong>
+        <span>categorías</span>
+      </div>
+    </div>
+
+    <h3>Archivo por año</h3>
+    <ul>
+      {% for year in years %}
+        <li><a href="{{ "/years/" | append: year.name | append: "/" | relative_url }}">{{ year.name }}</a> · {{ year.items | size }} entradas</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
