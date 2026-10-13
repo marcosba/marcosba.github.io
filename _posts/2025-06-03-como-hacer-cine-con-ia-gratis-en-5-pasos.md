@@ -1,139 +1,56 @@
 ---
-layout: post
+layout: default
 title: "Cómo hacer cine con IA gratis en 5 pasos"
-date: 2025-06-03 05:47:00 -03:00
-categories: [IA, Tecnología]
+date: 2025-06-03 05:47:00 -0300
+categories: [IA]
+tags: [ia, huggingface, video, generacion]
+permalink: /2025/06/como-hacer-cine-con-ia-gratis-en-5-pasos/
 ---
 
-¿Siempre quisiste hacer videos y no sabías cómo hacerlos?
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">escrito</p>
+    <h1>{{ page.title }}</h1>
+  </div>
 
-¿O tenés ganas de hacer tu propio anime o película de Hollywood?
+  <article class="post-article">
+    <p class="post-meta">{{ page.date | date: "%d %B %Y" }}</p>
 
-Hoy todo es posible con la IA.
+    <p>¿Siempre quisiste hacer videos y no sabías cómo hacerlo? ¿O tenés ganas de hacer tu propio anime o película de Hollywood?</p>
 
-Nuestro aliado más fuerte de hoy es **Hugging Face**.
+    <p>Hoy todo es posible con la IA. Nuestro aliado más fuerte es Hugging Face: una plataforma abierta para modelos de machine learning. Es como un “GitHub de la IA”, donde podés explorar modelos y herramientas para generar contenido visual, texto y más.</p>
 
-Hugging Face es una empresa de tecnología especializada en inteligencia artificial, conocida por su plataforma abierta para modelos de machine learning. Es como un "GitHub de la IA": ofrece una gran colección de modelos, demos y herramientas para experimentar sin tener que construir todo desde cero.
+    <h2>1. Analizar una imagen con Florence-2</h2>
 
-Hoy el trabajo es bastante manual, pero muchas opciones de la plataforma brindan la posibilidad de usar API. Este post va a centrarse en una ruta práctica y visual usando modelos accesibles.
+    <p>Si no tenés el prompt original, podés usar un modelo para describir una imagen. Florence-2 es útil para extraer detalles visuales y generar una descripción bastante rica.</p>
 
-En esta ocasión vamos a usar a [La Chica del Abrigo Azul](https://soymarcosba.blogspot.com/2023/08/la-chica-del-abrigo-azul.html), una imagen que me gustó y que funciona muy bien para transformar en un video.
+    <p>La idea es tomar una referencia visual y convertirla en texto para después usarla como base para nuevos resultados.</p>
 
-En el caso que no tengamos el prompt, podemos generar una idea de cómo pudo haber sido generada.
+    <h2>2. Generar una imagen base</h2>
 
-## ¿Cómo saber cómo fue hecha una imagen?
+    <p>Una vez que tenés la descripción, podes usar modelos como Playground v2.5 para generar una imagen con buena calidad. En esta etapa no se trata de una “ciencia exacta”, sino de buscar la combinación correcta de estilo y tamaño.</p>
 
-Vamos a usar para esto [Florence-2](https://huggingface.co/spaces/SkalskiP/better-florence-2), un modelo que tiene la capacidad de hacer una descripción detallada de una imagen.
+    <p>Para obtener mejores resultados conviene elegir bien la resolución. Algunas proporciones funcionan mejor que otras según el proyecto:</p>
 
-#### Configuración de Florence-2
+    <ul>
+      <li>1:1 — 512x512, 768x768, 1024x1024</li>
+      <li>4:5 — 512x640, 768x960</li>
+      <li>3:4 — 576x768, 768x1024</li>
+      <li>2:3 — 512x768, 640x960</li>
+    </ul>
 
-Por lo general obtengo buenos resultados usando la siguiente configuración:
+    <h2>3. Repetir el proceso de refinamiento</h2>
 
-- **Model:** microsoft/Florence-2-large
-- **Task:** More Detailed Caption
+    <p>La primera imagen no siempre es la definitiva. Lo importante es iterar, ajustar el prompt y probar variantes. El proceso se parece mucho a una puesta en escena: imagen base, revisión, ajuste y mejora.</p>
 
-Nos va a dar una descripción bastante bien desarrollada.
+    <h2>4. Darle movimiento o vida al material</h2>
 
-```text
-The image is a digital portrait of a young woman with long, wavy blue hair. She is wearing a blue jacket and has a serious expression on her face. The background is a dark blue with orange and pink tones.
-```
+    <p>Una vez que tenés la imagen o las bases visuales, podés animarlas, combinarlas o usarlas como referencia para secuencias y videos. La herramienta en sí puede variar, pero el principio es el mismo: construir una narración visual paso a paso.</p>
 
-Aunque se acerca bastante, le falta información clave para ciertos aspectos de la original, pero el resultado es bastante decente.
+    <h2>5. Producir con intención</h2>
 
-## Generación de imagen
+    <p>La IA te da la velocidad. Vos les das la intención. Si querés hacer cine, no hace falta tener un estudio completo: hace falta una idea, una referencia, un flujo de trabajo y paciencia para iterar.</p>
 
-Una vez que tenemos el prompt (original o de Florence-2), nos movemos a [Playground v2.5](https://huggingface.co/spaces/playgroundai/playground-v2.5).
-
-**Playground v2.5** es un modelo bastante bueno, que genera resultados con muy buena calidad. Para obtener el resultado que se muestra en este artículo diría que conviene usar solo este modelo, para mantener una coherencia visual alta.
-
-Acá generamos la imagen para luego pasar a darle vida.
-
-Si usamos la descripción de Florence-2, nos genera algo como la imagen principal de este artículo.
-
-_No hay mucha ciencia en este paso, más que elegir el tamaño de la imagen._
-
-[![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkxi85_Cq0wsfdfZoMAFi8wbh6ot87x18VxG8_o94Qh5vzihE5)](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkxi85_Cq0wsfdfZoMAFi8wbh6ot87x18VxG8_o94Qh5vzihE5)
-
-Como se ve, la imagen no es mala, pero no es exactamente la misma.
-
-Pero esta sería la original:
-
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-oW8MkOy6uLw-PeADjBTqQi3n1AAuyy8k0ZqGkgSbx-UHalm)
-
-_Clara diferencia de estilos._
-
-Para tener buenos resultados estas son las resoluciones que funcionan mejor:
-
-**1:1 (cuadrado)**
-
-- 512×512
-- 768×768
-- 1024×1024
-
-**4:5 (vertical)**
-
-- 512×640
-- 768×960
-
-**3:4 (vertical)**
-
-- 576×768
-- 768×1024
-
-**2:3 (vertical)**
-
-- 512×768
-- 640×960
-
-**9:16 (vertical)**
-
-- 576×1024
-- 864×1536
-
-**16:9 (horizontal)**
-
-- 1024×576
-- 1536×864
-
-**3:2 (horizontal)**
-
-- 768×512
-- 960×640
-
-**4:3 (horizontal)**
-
-- 768×576
-- 1024×768
-
-**21:9 (horizontal)**
-
-- 1008×432
-- 1344×576
-
-El resto de las opciones para modificar por lo general las dejo como están, pero sos libre de experimentar resultados.
-
-## Magia de Cine
-
-Ahora solo nos queda hacer magia: lograr que esa imagen tenga vida, una corta, porque la opción que vamos a usar solo te deja hacer menos de 4 segundos, pero algo es algo.
-
-Como si fuésemos un director de cine cual Spielberg, le tenemos que indicar al modelo de IA que queremos que sea el video.
-
-Si no tenemos una idea clara de qué queremos, podemos recurrir a nuestro fiel amigo ChatGPT u otro modelo como Gemini, y pedir algo así:
-
-```text
-Convertí esta descripción de imagen en instrucciones detalladas para generar un video de 5 segundos. Incluí en un solo párrafo información sobre los movimientos de cámara y personaje, el estilo visual y la duración de cada plano.
-```
-
-Como resultado nos va a dar las indicaciones necesarias para generar el video.
-
-Ahora que tenemos esto, nos dirigimos a usar el modelo de IA [Wan 2.1](https://huggingface.co/spaces/multimodalart/wan2-1-fast).
-
-Y lo que hacemos es cargar la imagen que generamos y las instrucciones para hacer el video.
-
-Elegimos el tiempo a gusto y esperamos a que se haga la magia.
-
-> Nota: Hay otras opciones, repito que yo las dejo como están porque me dio buenos resultados, pero pueden probar a ver qué resultados les da. Como por ejemplo el Negative Prompt para asegurarse de no generar detalles raros.
-
-[![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-oW8MkOy6uLw-PeADjBTqQi3n1AAuyy8k0ZqGkgSbx-UHalm)](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-oW8MkOy6uLw-PeADjBTqQi3n1AAuyy8k0ZqGkgSbx-UHalm)
-
-La clave está en combinar una imagen fuerte con una dirección clara del movimiento y la cinematografía. En pocas horas, una idea visual puede pasar de estática a animada sin necesidad de un estudio completo.
+    <p>La diferencia es que ahora la frontera entre “idea” y “resultado” está mucho más cerca.</p>
+  </article>
+</section>

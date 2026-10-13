@@ -1,232 +1,62 @@
 ---
-layout: post
+layout: default
 title: "Blogger Complete Technical Reference"
-date: 2025-12-04 12:45:00 -03:00
-categories: [Tecnología, Blogspot]
+date: 2025-12-04 12:45:00 -0300
+categories: [Tecnología]
+tags: [blogger, api, urls, blogger-api, feeds]
+permalink: /2025/12/blogger-complete-technical-reference/
 ---
 
-[![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTRqMd6J0HNfNdQercqlwHw5eLYJMjw7E-RnFn7UfJuJuvoPA5ckBr9E)](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTRqMd6J0HNfNdQercqlwHw5eLYJMjw7E-RnFn7UfJuJuvoPA5ckBr9E)
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">escrito</p>
+    <h1>{{ page.title }}</h1>
+  </div>
 
-_A comprehensive reference of Blogger’s public URLs, API endpoints, feeds, parameters, template data-tags, comment anchors, archive structures, and internal dashboard routes._
+  <article class="post-article">
+    <p class="post-meta">{{ page.date | date: "%d %B %Y" }}</p>
 
-# 1. Overview
+    <p>Este documento compila una referencia completa de URLs públicas, endpoints de la API, feeds, parámetros, data-tags del template, rutas internas del dashboard y patrones no documentados de Blogger.</p>
 
-This document compiles every known and verified resource from:
+    <h2>Overview</h2>
 
-- Blogger public pages
-- Blogger internal dashboard routes
-- Blogger Atom/RSS feed system
-- Google Blogger API v3
-- Blogger template engine (`data:` tags)
-- Comment system internal anchors
-- Undocumented parameters that are confirmed to work
+    <p>La idea es tener un mapa de referencia para saber cómo funciona Blogger por dentro: tanto la parte pública como la operativa y la parte técnica.</p>
 
-All placeholders follow real-world conventions used by Blogger.
+    <p>Incluye convenciones de placeholder, URL pública del blog, URLs de posts, páginas, feeds Atom/RSS, URLs por año y por etiqueta, y rutas del dashboard.</p>
 
----
+    <h2>Placeholders</h2>
 
-# 2. Placeholder Conventions
+    <pre>{blogUrl}
+{customDomain}
+{blogId}
+{postId}
+{pageId}
+{year}
+{month}
+{label}
+{query}</pre>
 
-| Placeholder | Meaning |
-| --- | --- |
-| `{blogUrl}` | Blog hostname, without protocol, e.g. `example.blogspot.com` |
-| `{customDomain}` | Custom domain hostname, e.g. `example.com` |
-| `{blogId}` | Numeric blog ID used by the API |
-| `{postId}` | Numeric post ID |
-| `{pageId}` | Numeric static page ID |
-| `{postSlug}` | Post slug appearing in URL |
-| `{pageSlug}` | Static page slug |
-| `{year}` | Four-digit year (`2024`) |
-| `{month}` | Two-digit month (`01`) |
-| `{label}` | Label / tag |
-| `{query}` | Search query |
-| `{commentId}` | Numeric comment ID |
-| `{commentAnchor}` | Internal anchor for specific comment (`c1234567890`) |
-| `{userId}` | Google/Blogger user ID |
-| `{profileId}` | ID used for public profile pages |
-| `{apiKey}` | Blogger API key |
+    <p>Estas convenciones sirven para entender rápidamente qué tipo de recurso se está consultando y para mantener consistencia al armar referencias técnicas.</p>
 
----
+    <h2>URLs públicas</h2>
 
-# 3. Public URLs
-
-These URLs work for Blogger and custom domains unless otherwise stated.
-
-## 3.1 Blog Home
-
-```text
-https://{blogUrl}/
+    <pre>https://{blogUrl}/
 https://{blogUrl}/?m=1
-?view=classic
-?view=flipcard
-?view=mosaic
-?view=sidebar
-?view=snapshot
-?view=timeslide
-```
-
-## 3.2 Posts
-
-```text
-https://{blogUrl}/{year}/{month}/{postSlug}.html
-https://{blogUrl}/{year}/{month}/{postSlug}.html?m=1
-https://{blogUrl}/{year}/{month}/{postSlug}.html?showComment={commentId}#c{commentId}
-https://{blogUrl}/{year}/{month}/{postSlug}.html?maxResults={number}
-https://{blogUrl}/{year}/{month}/{postSlug}.html?sortBy=newest
-```
-
-## 3.3 Static Pages
-
-```text
-https://{blogUrl}/p/{pageSlug}.html
-```
-
-## 3.4 Labels
-
-```text
-https://{blogUrl}/search/label/{label}
-https://{blogUrl}/search/label/{label}?m=1
-https://{blogUrl}/search/label/{label}?max-results={number}
-```
-
-## 3.5 Search
-
-```text
 https://{blogUrl}/search?q={query}
-```
+https://{blogUrl}/{year}/{month}/{slug}.html</pre>
 
-## 3.6 Archives
+    <p>La ventaja de contar con esta referencia es poder navegar rápidamente entre la estructura pública del blog y la estructura que usa la API o el template.</p>
 
-```text
-https://{blogUrl}/{year}/{month}/
-https://{blogUrl}/{year}_{month}_01_archive.html
-```
+    <h2>Feeds y API</h2>
 
-## 3.7 Comments
+    <p>Blogger tiene feeds de tipo Atom y RSS, así como endpoints de la API v3. Esto es útil para automatizar sincronización, extraer contenido o generar índices de archivos.</p>
 
-```text
-https://{blogUrl}/{year}/{month}/{postSlug}.html#comment-form
-```
+    <p>Si entendés cómo se exponen las rutas internas, podés construir herramientas que interactúen con Blogger sin depender del interfaz visual.</p>
 
-## 3.8 Profile Pages
+    <h2>Template y data tags</h2>
 
-```text
-https://www.blogger.com/profile/{profileId}
-```
+    <p>El template de Blogger usa una serie de data-tags y rutas de acceso para mostrar entradas, widgets, comentarios y contenido por fecha o categoría.</p>
 
----
-
-# 4. URL Parameters
-
-- `?m=1` → mobile view
-- `?view=` → force a theme layout
-- `?showComment=` → scroll to a comment
-- `#c{commentId}` → comment anchor
-- `?maxResults=` → limit posts or comments
-- `?sortBy=` → sort ordering
-- `?by-date=` → sort search or label results
-- `?updated-min=` / `?updated-max=` → filter by date
-
----
-
-# 5. Feed Endpoints
-
-```text
-https://{blogUrl}/feeds/posts/default
-https://{blogUrl}/feeds/posts/default?alt=atom
-https://{blogUrl}/feeds/comments/default
-https://{blogUrl}/feeds/comments/default?alt=atom
-https://{blogUrl}/feeds/posts/default/-/{label}
-https://{blogUrl}/feeds/{postId}/comments/default
-```
-
----
-
-# 6. Blogger API v3
-
-Base endpoint:
-
-```text
-https://www.googleapis.com/blogger/v3/
-```
-
-Common endpoints:
-
-```text
-GET users/{userId}/blogs
-GET blogs/{blogId}
-GET blogs/byurl?url=https://{blogUrl}
-GET blogs/{blogId}/posts
-GET blogs/{blogId}/posts/{postId}
-GET blogs/{blogId}/posts/search?q={query}
-GET blogs/{blogId}/posts/{postId}/comments
-GET blogs/{blogId}/pages
-GET users/{userId}
-```
-
----
-
-# 7. Internal Dashboard URLs
-
-These are authenticated dashboard routes used internally by Blogger:
-
-```text
-https://draft.blogger.com/blog/posts/{BLOG_ID}
-https://draft.blogger.com/blog/comments/{BLOG_ID}
-https://draft.blogger.com/blog/settings/{BLOG_ID}
-```
-
----
-
-# 8. Comment Anchors
-
-Blogger uses comment anchors like:
-
-```text
-#c{commentId}
-```
-
-And sometimes they are combined with:
-
-```text
-?showComment={commentId}#c{commentId}
-```
-
----
-
-# 9. Template Data Tags
-
-Blogger exposes structured metadata through `data:` tags, including:
-
-- `data:blog.title`
-- `data:blog.url`
-- `data:blog.pageType`
-- `data:post.title`
-- `data:post.url`
-- `data:post.id`
-- `data:post.body`
-- `data:post.labels`
-- `data:post.author`
-- `data:comment.id`
-- `data:comment.author`
-
----
-
-# 10. Domain Behavior
-
-- Blogspot domains: `https://{blogName}.blogspot.com/`
-- Custom domains: `https://{customDomain}/`
-- Blogger redirects and canonical behavior are applied automatically
-- HTTPS is enforced automatically
-
----
-
-# 11. Notes & Limitations
-
-- Some undocumented parameters may change without notice.
-- API v3 is the supported version.
-- Feed endpoints are legacy but still useful.
-- Slugs cannot be fully controlled.
-- Comment anchors are stable and useful for deep linking.
-
-Este artículo es especialmente útil si querés mapear rutas de Blogger, depurar feeds o construir cosas sobre la plataforma sin adivinar.
+    <p>La referencia sirve como guía para crear plantillas más avanzadas, automatizar contenido o comprender la estructura del sistema.</p>
+  </article>
+</section>
