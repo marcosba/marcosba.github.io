@@ -1,0 +1,23 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">archive</p>
+    <h2>Blog</h2>
+  </div>
+
+  <div id="postlistdiv">
+    <ul>
+      {% for post in site.posts reversed %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

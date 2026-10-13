@@ -2,19 +2,14 @@ title: "marcosba"
 description: "Blog personal de Marcos — informática, IA, automatización y experimentos"
 url: "https://marcosba.github.io"
 baseurl: ""
-
 markdown: kramdown
 kramdown:
   input: GFM
-
 permalink: /:year/:month/:day/:title/
-
-# Keep builds minimal — no remote theme, we use our CSS and layouts
-theme: null
-
-# Future posts allowed
 future: true
-
-# Exclude files from the site build
+collections:
+  pages:
+    output: true
+    permalink: /:name/
 exclude:
   - README.md

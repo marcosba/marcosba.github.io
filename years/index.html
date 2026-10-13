@@ -1,0 +1,24 @@
+---
+layout: default
+permalink: /years/
+---
+
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">years</p>
+    <h2>Años</h2>
+  </div>
+
+  <div class="page-content">
+    {% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+    {% if years.size > 0 %}
+      <ul>
+        {% for year in years %}
+          <li><a href="{{ "/years/" | append: year.name | append: "/" | relative_url }}">{{ year.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aún no hay entradas archivadas.</p>
+    {% endif %}
+  </div>
+</section>

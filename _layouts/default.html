@@ -7,10 +7,7 @@
     <title>{{ page.title | default: site.title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ "/styles.css" | relative_url }}" />
   </head>
   <body>
@@ -18,20 +15,20 @@
       <nav class="topbar" aria-label="Navegación principal">
         <a href="{{ "/" | relative_url }}" class="brand">marcosba</a>
         <div class="nav-links">
-          <a href="{{ "/" | relative_url }}#inicio">inicio</a>
-          <a href="{{ "/" | relative_url }}#escritos">escritos</a>
-          <a href="{{ "/" | relative_url }}#proyectos">proyectos</a>
-          <a href="{{ "/sobre/" | relative_url }}">sobre</a>
+          <a href="{{ "/" | relative_url }}">home</a>
+          <a href="{{ "/blog/" | relative_url }}">blog</a>
+          <a href="{{ "/about/" | relative_url }}">about</a>
+          <a href="{{ "/more/" | relative_url }}">more</a>
         </div>
       </nav>
     </header>
 
-    <div class="page-shell">
+    <main class="page-shell">
       {{ content }}
-    </div>
+    </main>
 
     <footer class="site-footer">
-      <p>© {{ site.title }} — Contenido y código bajo la licencia del autor.</p>
+      <p>© {{ site.title }} — contenido y código bajo la licencia del autor.</p>
     </footer>
   </body>
 </html>

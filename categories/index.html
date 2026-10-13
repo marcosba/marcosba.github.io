@@ -1,0 +1,25 @@
+---
+layout: default
+permalink: /categories/
+---
+
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">categories</p>
+    <h2>Categorías</h2>
+  </div>
+
+  <div class="page-content">
+    {% if site.categories.size > 0 %}
+      <ul>
+        {% for category in site.categories %}
+          <li>
+            <a href="{{ "/categories/" | append: category[0] | slugify | append: "/" | relative_url }}">{{ category[0] }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aún no hay categorías creadas.</p>
+    {% endif %}
+  </div>
+</section>

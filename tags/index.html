@@ -1,0 +1,25 @@
+---
+layout: default
+permalink: /tags/
+---
+
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">tags</p>
+    <h2>Tags</h2>
+  </div>
+
+  <div class="page-content">
+    {% if site.tags.size > 0 %}
+      <ul>
+        {% for tag in site.tags %}
+          <li>
+            <a href="{{ "/tags/" | append: tag[0] | slugify | append: "/" | relative_url }}">{{ tag[0] }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aún no hay tags creados.</p>
+    {% endif %}
+  </div>
+</section>

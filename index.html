@@ -2,20 +2,29 @@
 layout: default
 ---
 
+<section class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">/dev/marcosba</p>
+    <h1>Building things, breaking things, learning.</h1>
+  </div>
+
+  <div class="page-content">
+    <p>Informática, IA, automatización, experimentación y un archivo personal de notas, proyectos y referencias.</p>
+  </div>
+</section>
+
 <section id="postlistdiv" class="section-block">
   <div class="section-title-wrap">
     <p class="section-kicker">escritos</p>
-    <h2>Entradas</h2>
+    <h2>Archivo</h2>
   </div>
 
-  <div>
-    <ul>
-      {% for post in site.posts %}
+  <ul>
+    {% for post in site.posts reversed %}
       <li>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
       </li>
-      {% endfor %}
-    </ul>
-  </div>
+    {% endfor %}
+  </ul>
 </section>
