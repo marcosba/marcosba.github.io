@@ -2,95 +2,90 @@
 layout: default
 ---
 
-<div class="page-shell">
-  <main id="inicio" class="content">
-    <section class="hero">
-      <p class="eyebrow">/dev/marcosba</p>
-      <h1>Building things, breaking things, learning.</h1>
-      <p class="lede">
-        Informática, IA, automatización y experimentos. Un blog personal para dejar registro
-        de ideas, proyectos, herramientas y descubrimientos de la web y la tecnología.
-      </p>
-      <div class="hero-meta">
-        <span>👨‍💻 software</span>
-        <span>🤖 IA</span>
-        <span>⚙️ automatización</span>
-        <span>🧪 prototipos</span>
-      </div>
-    </section>
+<section class="hero">
+  <p class="eyebrow">/dev/marcosba</p>
+  <h1>Building things, breaking things, learning.</h1>
+  <p class="lede">
+    Informática, IA, automatización y experimentos. Un blog personal para dejar registro
+    de ideas, proyectos, herramientas y descubrimientos de la web y la tecnología.
+  </p>
+  <div class="hero-meta">
+    <span>👨‍💻 software</span>
+    <span>🤖 IA</span>
+    <span>⚙️ automatización</span>
+    <span>🧪 prototipos</span>
+  </div>
+</section>
 
-    <section id="escritos" class="section-block">
-      <div class="section-title-wrap">
-        <p class="section-kicker">escritos</p>
-        <h2>Notas y reflexiones</h2>
-      </div>
+<section id="escritos" class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">escritos</p>
+    <h2>Notas y reflexiones</h2>
+  </div>
 
-      {% for post in site.posts limit:10 %}
-      <article class="post-card">
-        <div class="post-meta">
-          <span>{{ post.date | date: "%Y" }}</span>
-          {% if post.categories.size > 0 %}<span>{{ post.categories | join: ", " }}</span>{% endif %}
-        </div>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-        <a href="{{ post.url | relative_url }}" aria-label="Leer más sobre {{ post.title }}">leer más →</a>
-      </article>
-      {% endfor %}
+  {% for post in site.posts limit:10 %}
+  <article class="post-card">
+    <div class="post-meta">
+      <span>{{ post.date | date: "%Y" }}</span>
+      {% if post.categories.size > 0 %}<span>{{ post.categories | join: ", " }}</span>{% endif %}
+    </div>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+    <a href="{{ post.url | relative_url }}" aria-label="Leer más sobre {{ post.title }}">leer más →</a>
+  </article>
+  {% endfor %}
+</section>
 
-    </section>
+<section id="proyectos" class="section-block">
+  <div class="section-title-wrap">
+    <p class="section-kicker">proyectos</p>
+    <h2>Lo que construye este sitio</h2>
+  </div>
 
-    <section id="proyectos" class="section-block">
-      <div class="section-title-wrap">
-        <p class="section-kicker">proyectos</p>
-        <h2>Lo que construye este sitio</h2>
-      </div>
+  <div class="project-list">
+    <div class="project-item">
+      <span class="project-tag">Python</span>
+      <h3>Blosher</h3>
+      <p>Una app para publicar contenido en Blogger con OAuth2, Markdown y gestión de posts.</p>
+    </div>
+    <div class="project-item">
+      <span class="project-tag">Python</span>
+      <h3>MoniNotes</h3>
+      <p>Grabación automática de voz por activación y detección de silencio.</p>
+    </div>
+    <div class="project-item">
+      <span class="project-tag">Python</span>
+      <h3>github-list-organizer</h3>
+      <p>Organiza repositorios y estrellas para convertir el caos en un sistema.</p>
+    </div>
+    <div class="project-item">
+      <span class="project-tag">PowerShell</span>
+      <h3>ElevateShell</h3>
+      <p>Una shell de Windows con foco en elevación y utilidad para tareas del sistema.</p>
+    </div>
+    <div class="project-item">
+      <span class="project-tag">Docs</span>
+      <h3>BCTR</h3>
+      <p>Referencia técnica sobre Blogger: URLs públicas, endpoints, feeds y rutas internas.</p>
+    </div>
+    <div class="project-item">
+      <span class="project-tag">Web</span>
+      <h3>vitelyus</h3>
+      <p>Un proyecto web con foco en rendimiento, contenido y escalabilidad moderna.</p>
+    </div>
+  </div>
+</section>
 
-      <div class="project-list">
-        <div class="project-item">
-          <span class="project-tag">Python</span>
-          <h3>Blosher</h3>
-          <p>Una app para publicar contenido en Blogger con OAuth2, Markdown y gestión de posts.</p>
-        </div>
-        <div class="project-item">
-          <span class="project-tag">Python</span>
-          <h3>MoniNotes</h3>
-          <p>Grabación automática de voz por activación y detección de silencio.</p>
-        </div>
-        <div class="project-item">
-          <span class="project-tag">Python</span>
-          <h3>github-list-organizer</h3>
-          <p>Organiza repositorios y estrellas para convertir el caos en un sistema.</p>
-        </div>
-        <div class="project-item">
-          <span class="project-tag">PowerShell</span>
-          <h3>ElevateShell</h3>
-          <p>Una shell de Windows con foco en elevación y utilidad para tareas del sistema.</p>
-        </div>
-        <div class="project-item">
-          <span class="project-tag">Docs</span>
-          <h3>BCTR</h3>
-          <p>Referencia técnica sobre Blogger: URLs públicas, endpoints, feeds y rutas internas.</p>
-        </div>
-        <div class="project-item">
-          <span class="project-tag">Web</span>
-          <h3>vitelyus</h3>
-          <p>Un proyecto web con foco en rendimiento, contenido y escalabilidad moderna.</p>
-        </div>
-      </div>
-    </section>
+<section id="sobre" class="section-block about">
+  <div class="section-title-wrap">
+    <p class="section-kicker">sobre</p>
+    <h2>Un archivo personal de tecnología</h2>
+  </div>
 
-    <section id="sobre" class="section-block about">
-      <div class="section-title-wrap">
-        <p class="section-kicker">sobre</p>
-        <h2>Un archivo personal de tecnología</h2>
-      </div>
-
-      <p>
-        Este sitio reúne el hilo conductor de varios proyectos: documentación técnica, automatización,
-        herramientas de productividad, prototipado y la idea de que el conocimiento se vuelve más útil
-        cuando se comparte con intención. La vieja Internet, la curiosidad y la experimentación todavía
-        tienen mucho que decir.
-      </p>
-    </section>
-  </main>
-</div>
+  <p>
+    Este sitio reúne el hilo conductor de varios proyectos: documentación técnica, automatización,
+    herramientas de productividad, prototipado y la idea de que el conocimiento se vuelve más útil
+    cuando se comparte con intención. La vieja Internet, la curiosidad y la experimentación todavía
+    tienen mucho que decir.
+  </p>
+</section>
