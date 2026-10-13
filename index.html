@@ -1,152 +1,96 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Blog personal de Marcos, sobre informática, IA, automatización, herramientas y experimentos digitales."
-    />
-    <title>Marcosba — Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <nav class="topbar" aria-label="Navegación principal">
-          <a href="#inicio" class="brand">marcosba</a>
-          <div class="nav-links">
-            <a href="#inicio">inicio</a>
-            <a href="#escritos">escritos</a>
-            <a href="#proyectos">proyectos</a>
-            <a href="#sobre">sobre</a>
-          </div>
-        </nav>
-      </header>
+---
+layout: default
+---
 
-      <main id="inicio" class="content">
-        <section class="hero">
-          <p class="eyebrow">/dev/marcosba</p>
-          <h1>Building things, breaking things, learning.</h1>
-          <p class="lede">
-            Informática, IA, automatización y experimentos. Un blog personal para dejar registro
-            de ideas, proyectos, herramientas y descubrimientos de la web y la tecnología.
-          </p>
-          <div class="hero-meta">
-            <span>👨‍💻 software</span>
-            <span>🤖 IA</span>
-            <span>⚙️ automatización</span>
-            <span>🧪 prototipos</span>
-          </div>
-        </section>
+<div class="page-shell">
+  <main id="inicio" class="content">
+    <section class="hero">
+      <p class="eyebrow">/dev/marcosba</p>
+      <h1>Building things, breaking things, learning.</h1>
+      <p class="lede">
+        Informática, IA, automatización y experimentos. Un blog personal para dejar registro
+        de ideas, proyectos, herramientas y descubrimientos de la web y la tecnología.
+      </p>
+      <div class="hero-meta">
+        <span>👨‍💻 software</span>
+        <span>🤖 IA</span>
+        <span>⚙️ automatización</span>
+        <span>🧪 prototipos</span>
+      </div>
+    </section>
 
-        <section id="escritos" class="section-block">
-          <div class="section-title-wrap">
-            <p class="section-kicker">escritos</p>
-            <h2>Notas y reflexiones</h2>
-          </div>
+    <section id="escritos" class="section-block">
+      <div class="section-title-wrap">
+        <p class="section-kicker">escritos</p>
+        <h2>Notas y reflexiones</h2>
+      </div>
 
-          <article class="post-card">
-            <div class="post-meta">
-              <span>2026</span>
-              <span>experimentos</span>
-            </div>
-            <h3>La web como archivo vivo</h3>
-            <p>
-              Las referencias de Blogger, los feeds, las rutas ocultas y los patrones de publicación
-              tienen más valor del que parece. Cuando se compilan como una base documental, la web
-              deja de ser efímera y se vuelve un archivo de usos, hacks y memorias técnicas.
-            </p>
-            <a href="#" aria-label="Leer más sobre La web como archivo vivo">leer más →</a>
-          </article>
+      {% for post in site.posts limit:10 %}
+      <article class="post-card">
+        <div class="post-meta">
+          <span>{{ post.date | date: "%Y" }}</span>
+          {% if post.categories.size > 0 %}<span>{{ post.categories | join: ", " }}</span>{% endif %}
+        </div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+        <a href="{{ post.url | relative_url }}" aria-label="Leer más sobre {{ post.title }}">leer más →</a>
+      </article>
+      {% endfor %}
 
-          <article class="post-card">
-            <div class="post-meta">
-              <span>2026</span>
-              <span>productividad</span>
-            </div>
-            <h3>Las notas de voz como sistema</h3>
-            <p>
-              Grabar ideas al dictado, separar frases por silencio y convertir la intuición en un
-              archivo útil es un patrón extraordinariamente práctico para pensar sin fricción.
-            </p>
-            <a href="#" aria-label="Leer más sobre Las notas de voz como sistema">leer más →</a>
-          </article>
+    </section>
 
-          <article class="post-card">
-            <div class="post-meta">
-              <span>2026</span>
-              <span>automatización</span>
-            </div>
-            <h3>GitHub como cuaderno personal</h3>
-            <p>
-              Cuando una colección de repositorios es una especie de diario técnico, el trabajo no se
-              limita a código: también se vuelve catalogación, narrativa y memoria operativa.
-            </p>
-            <a href="#" aria-label="Leer más sobre GitHub como cuaderno personal">leer más →</a>
-          </article>
-        </section>
+    <section id="proyectos" class="section-block">
+      <div class="section-title-wrap">
+        <p class="section-kicker">proyectos</p>
+        <h2>Lo que construye este sitio</h2>
+      </div>
 
-        <section id="proyectos" class="section-block">
-          <div class="section-title-wrap">
-            <p class="section-kicker">proyectos</p>
-            <h2>Lo que construye este sitio</h2>
-          </div>
+      <div class="project-list">
+        <div class="project-item">
+          <span class="project-tag">Python</span>
+          <h3>Blosher</h3>
+          <p>Una app para publicar contenido en Blogger con OAuth2, Markdown y gestión de posts.</p>
+        </div>
+        <div class="project-item">
+          <span class="project-tag">Python</span>
+          <h3>MoniNotes</h3>
+          <p>Grabación automática de voz por activación y detección de silencio.</p>
+        </div>
+        <div class="project-item">
+          <span class="project-tag">Python</span>
+          <h3>github-list-organizer</h3>
+          <p>Organiza repositorios y estrellas para convertir el caos en un sistema.</p>
+        </div>
+        <div class="project-item">
+          <span class="project-tag">PowerShell</span>
+          <h3>ElevateShell</h3>
+          <p>Una shell de Windows con foco en elevación y utilidad para tareas del sistema.</p>
+        </div>
+        <div class="project-item">
+          <span class="project-tag">Docs</span>
+          <h3>BCTR</h3>
+          <p>Referencia técnica sobre Blogger: URLs públicas, endpoints, feeds y rutas internas.</p>
+        </div>
+        <div class="project-item">
+          <span class="project-tag">Web</span>
+          <h3>vitelyus</h3>
+          <p>Un proyecto web con foco en rendimiento, contenido y escalabilidad moderna.</p>
+        </div>
+      </div>
+    </section>
 
-          <div class="project-list">
-            <div class="project-item">
-              <span class="project-tag">Python</span>
-              <h3>Blosher</h3>
-              <p>Una app para publicar contenido en Blogger con OAuth2, Markdown y gestión de posts.</p>
-            </div>
-            <div class="project-item">
-              <span class="project-tag">Python</span>
-              <h3>MoniNotes</h3>
-              <p>Grabación automática de voz por activación y detección de silencio.</p>
-            </div>
-            <div class="project-item">
-              <span class="project-tag">Python</span>
-              <h3>github-list-organizer</h3>
-              <p>Organiza repositorios y estrellas para convertir el caos en un sistema.</p>
-            </div>
-            <div class="project-item">
-              <span class="project-tag">PowerShell</span>
-              <h3>ElevateShell</h3>
-              <p>Una shell de Windows con foco en elevación y utilidad para tareas del sistema.</p>
-            </div>
-            <div class="project-item">
-              <span class="project-tag">Docs</span>
-              <h3>BCTR</h3>
-              <p>Referencia técnica sobre Blogger: URLs públicas, endpoints, feeds y rutas internas.</p>
-            </div>
-            <div class="project-item">
-              <span class="project-tag">Web</span>
-              <h3>vitelyus</h3>
-              <p>Un proyecto web con foco en rendimiento, contenido y escalabilidad moderna.</p>
-            </div>
-          </div>
-        </section>
+    <section id="sobre" class="section-block about">
+      <div class="section-title-wrap">
+        <p class="section-kicker">sobre</p>
+        <h2>Un archivo personal de tecnología</h2>
+      </div>
 
-        <section id="sobre" class="section-block about">
-          <div class="section-title-wrap">
-            <p class="section-kicker">sobre</p>
-            <h2>Un archivo personal de tecnología</h2>
-          </div>
-
-          <p>
-            Este sitio reúne el hilo conductor de varios proyectos: documentación técnica, automatización,
-            herramientas de productividad, prototipado y la idea de que el conocimiento se vuelve más útil
-            cuando se comparte con intención. La vieja Internet, la curiosidad y la experimentación todavía
-            tienen mucho que decir.
-          </p>
-        </section>
-      </main>
-    </div>
-  </body>
-</html>
+      <p>
+        Este sitio reúne el hilo conductor de varios proyectos: documentación técnica, automatización,
+        herramientas de productividad, prototipado y la idea de que el conocimiento se vuelve más útil
+        cuando se comparte con intención. La vieja Internet, la curiosidad y la experimentación todavía
+        tienen mucho que decir.
+      </p>
+    </section>
+  </main>
+</div>
