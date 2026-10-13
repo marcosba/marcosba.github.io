@@ -264,7 +264,7 @@ pre {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .stat-card {
@@ -281,6 +281,25 @@ pre {
   font-size: 1.6rem;
   color: var(--accent);
   margin-bottom: 0.2rem;
+}
+
+.page-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.page-list li {
+  margin: 0.4rem 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.02);
+}
+
+.page-list li a {
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {

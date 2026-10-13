@@ -12,9 +12,9 @@ permalink: /years/
   <div class="page-content">
     {% assign years = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
     {% if years.size > 0 %}
-      <ul>
+      <ul class="page-list">
         {% for year in years %}
-          <li>{{ year.name }} ({{ year.items | size }})</li>
+          <li><a href="{{ "/years/" | append: year.name | append: "/" | relative_url }}">{{ year.name }}</a> ({{ year.items | size }})</li>
         {% endfor %}
       </ul>
     {% else %}

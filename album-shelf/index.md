@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Album Shelf
 permalink: /album-shelf/
 ---
 
@@ -10,6 +11,10 @@ permalink: /album-shelf/
   </div>
 
   <div class="page-content">
-    <p>Catálogo de álbumes y discos favoritos.</p>
+    <p>Discos, artistas y referencias musicales que fueron importantes en distintos momentos.</p>
+    <ul class="page-list">
+      <li><a href="{{ "/blog/" | relative_url }}">Entradas del blog</a></li>
+      <li><a href="{{ "/tags/" | relative_url }}">Ver tags</a></li>
+    </ul>
   </div>
 </section>

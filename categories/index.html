@@ -11,9 +11,9 @@ permalink: /categories/
 
   <div class="page-content">
     {% if site.categories.size > 0 %}
-      <ul>
+      <ul class="page-list">
         {% for category in site.categories %}
-          <li>{{ category[0] }} ({{ category[1].size }})</li>
+          <li><a href="{{ "/categories/" | append: category[0] | slugify | append: "/" | relative_url }}">{{ category[0] }}</a> ({{ category[1].size }})</li>
         {% endfor %}
       </ul>
     {% else %}

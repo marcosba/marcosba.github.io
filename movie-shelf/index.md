@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Movie Shelf
 permalink: /movie-shelf/
 ---
 
@@ -10,6 +11,9 @@ permalink: /movie-shelf/
   </div>
 
   <div class="page-content">
-    <p>Catálogo de películas y referencias visuales.</p>
+    <p>Películas, descubrimientos y referencias visuales que siguen resonando.</p>
+    <ul class="page-list">
+      <li><a href="{{ "/more/" | relative_url }}">Volver a More</a></li>
+    </ul>
   </div>
 </section>

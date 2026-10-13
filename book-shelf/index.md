@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Book Shelf
 permalink: /book-shelf/
 ---
 
@@ -10,6 +11,10 @@ permalink: /book-shelf/
   </div>
 
   <div class="page-content">
-    <p>Catálogo de libros y referencias leídas. Este bloque puede ampliarse con una lista, miniaturas o una grilla editorial.</p>
+    <p>Una pequeña biblioteca personal: libros, apuntes, referencias y lecturas que han dejado huella.</p>
+    <ul class="page-list">
+      <li><a href="{{ "/blog/" | relative_url }}">Libros y notas</a></li>
+      <li><a href="{{ "/categories/" | relative_url }}">Ver categorías</a></li>
+    </ul>
   </div>
 </section>
